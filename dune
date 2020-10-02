@@ -1,0 +1,8 @@
+(install
+  (section bin)
+  (files libargon2-1.dll))
+
+(rule
+  (targets libargon2-1.dll argon2.exe)
+  (deps Makefile libargon2.pc.in (glob_files src/*.c) (glob_files src/*.h) (glob_files src/blake2/*.c) (glob_files src/blake2/*.h) (glob_files include/*.h))
+  (action (with-outputs-to build.log (run make CC=i686-w64-mingw32-gcc KERNEL_NAME=MINGW))))
